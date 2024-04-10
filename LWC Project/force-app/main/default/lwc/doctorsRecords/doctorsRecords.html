@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Add Hyperlink Column in LWC Datatable" icon-name="standard:account">
+        <div class="slds-p-horizontal_small">
+            <div if:true={data}>
+                <lightning-datatable data={data} columns={columns} key-field="Id"></lightning-datatable>
+            </div>
+        </div>
+    </lightning-card>
+</template>

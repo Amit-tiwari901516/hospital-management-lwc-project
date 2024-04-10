@@ -1,0 +1,108 @@
+<template>
+  <div class="container">
+    <lightning-card title="Appointment">
+      
+      <div class = "slds-grid slds-wrap">
+        <div class="slds-size_1-of-2">
+          <lightning-input label="First Name" class="field" type="text" value ={fName} onchange={changeFNameHandler}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label="Last Name" class="field" type="text" value ={lName} onchange={changeLNameHandler}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label="Date of Birth" class="field" type="date" value ={DOB} onchange={changeDOBHandler}></lightning-input>
+          <template if:true={DOBerror}> 
+            <div style="color:red; padding-left: 1.5rem;">Date of Birth should be in past</div>
+        </template>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label="Phone" class="field" type="phone" value ={Phone} onchange={changePhoneHandler}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-combobox
+            name="Gender"
+            label="Gender"
+            value={Gender}
+            placeholder="none"
+            options={genderOptions}
+            onchange={handleGenderChange}  
+            class="field"                
+          ></lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "Email" class = "field" type = "email" value={email} onchange={handleEmailChange}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "Street Address" class = "field" type = "Text Area" value={StreetAddress} onchange={handleStreetAddressChange}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "City" class = "field" type = "text" value={City} onchange={handleCityChange}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "State" class = "field" type = "text" value={State} onchange={handleStateChange}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "Country" class = "field" type = "text" value={Country} onchange={handleCountryChange}></lightning-input>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label = "Postal/Zip Code" class = "field" type = "text" value={PostalCode} onchange={handlePostalCodeChange}></lightning-input>
+        </div>
+        
+        <div class="slds-size_1-of-2">
+          <lightning-combobox
+            name="EnterTheDepartmentName"
+            label="Enter The Department Name"
+            value={Department}
+            placeholder="Select Department"
+            options={DepartmentOptions}
+            onchange={handleDepartmentChange} 
+            class="field"
+          ></lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-combobox
+            name="HospitalVisit"
+            label="Visited Hospital Earlier"
+            value={HospitalVisit}
+            placeholder="none"
+            options={HospitalVisitOptions}
+            onchange={handleHospitalVisitChange} 
+            class="field"
+          ></lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-combobox
+            name="Reason"
+            label="Reason Of Appointment"
+            value={Reason}
+            placeholder="none"
+            options={reasonOptions}
+            onchange={handleReasonChange} 
+            class="field"
+          ></lightning-combobox>
+        </div>
+        <div class="slds-size_1-of-2">
+          <lightning-input label="Appointment Date and Time" class="field" type="DateTime" value={appointmentDate} onchange={changeAppointmentDateHandler}></lightning-input>
+          <template if:true={appointmentDateError}> 
+            <div style="color:red; padding-left: 1.5rem;">Appointment should be in future</div>
+          </template>
+        </div>
+        <div class="slds-size_1-of-2" style="padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 5px; padding-bottom: 18px;">
+          <lightning-record-picker
+            object-api-name="Doctor_Registeration__c"
+            label="Treating Doctor"
+            matching-info={MatchingInfo}
+            onchange={changeTreatingDoctorHandler}
+            value={TreatingDoctor} 
+          ></lightning-record-picker>
+        </div>
+      </div>
+    </lightning-card>
+    <footer class="slds-modal__footer" style="background-color:white;">
+      <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+      <button class="slds-button slds-button_neutral" onclick={SaveandopenNew} title="SaveandNew">Save & New</button>
+      <button class="slds-button slds-button_brand" onclick={handleSubmit} type="submit" title="Save">Save</button>
+  </footer>
+  </div>
+</template>
+

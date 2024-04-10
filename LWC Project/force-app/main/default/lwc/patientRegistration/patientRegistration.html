@@ -1,0 +1,126 @@
+<template>
+    <div class = "container">
+        <lightning-card title="Personal Information">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="firstName" label = "First Name" class = "pInfo" type = "text" value={firstName} onchange = {changeFNameHandler}></lightning-input>    
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="lastName" label = "Last Name" class = "pInfo" type = "text" value={lastName} onchange = {changeLNameHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-combobox
+                      name="Gender"
+                      label="Gender"
+                      value={Gender}
+                      placeholder="none"
+                      options={genderOptions}
+                      onchange={handleGenderChange}  
+                      class="pInfo"                
+                    ></lightning-combobox>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="DOB" label = "Date of Birth" class = "pInfo" type = "date" value={DOB} onchange={handleDOBChange}></lightning-input>
+                    <template if:true={DOBerror}> 
+                        <div style="color:red; padding-left: 1.5rem;">Date of Birth should be less then today</div>
+                    </template>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-combobox
+                      name="MaritalStatus"
+                      label="Marital Status"
+                      value={MaritalStatus}
+                      placeholder="none"
+                      options={maritalOptions}
+                      onchange={handleMaritalChange} 
+                      class="pInfo"                  
+                    ></lightning-combobox>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="Occupation" label = "Occupation" class = "pInfo" type = "text" value={Occupation} onchange={handleOccupationChange}></lightning-input>
+                </div>
+            </div>           
+        </lightning-card>
+
+        <lightning-card title="Contact Details">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="phone" label = "Phone" class = "pInfo" type = "phone" value={phone} onchange={handlePhoneChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="email" label = "Email" class = "pInfo" type = "email" value={email} onchange={handleEmailChange}></lightning-input>
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card title="Address">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="StreetAddress" label = "Street Address" class = "pInfo" type = "Text Area" value={StreetAddress} onchange={handleStreetAddressChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="City" label = "City" class = "pInfo" type = "text" value={City} onchange={handleCityChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="State" label = "State" class = "pInfo" type = "text" value={State} onchange={handleStateChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="Country" label = "Country" class = "pInfo" type = "text" value={Country} onchange={handleCountryChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="PostalCode" label = "Postal/Zip Code" class = "pInfo" type = "text" value={PostalCode} onchange={handlePostalCodeChange}></lightning-input>
+                </div>
+
+            </div>
+        </lightning-card>
+
+        <lightning-card title="Medical History">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="Allergies" label = "Allergies" class = "pInfo" type = "text" value={Allergies} onchange={handleAllergiesChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="chronicCondition" label = "Chronic Condition" class = "pInfo" type = "text" value={chronicCondition} onchange={handleChronicConditionChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="previousSurgeries" label = "Previous Surgeries" class = "pInfo" type = "text" value={previousSurgeries} onchange={handlePreviousSurgeriesChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="FamilyMedicalHistory" label = "Family Medical History" class = "pInfo" type = "text" value={FamilyMedicalHistory} onchange={handleFamilyMedicalHistoryChange}></lightning-input>
+                </div>
+            </div>
+            
+        </lightning-card>
+
+        <lightning-card title="Insurance details">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="InsuranceProvider" label = "Insurance Provider" class = "pInfo" type = "text" value={InsuranceProvider} onchange={handleInsuranceProviderChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="PolicyNumber" label = "Policy Number" class = "pInfo" type = "number" value={PolicyNumber} onchange={handlePolicyNumberChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="GroupNumber" label = "Group Number" class = "pInfo" type = "text" value={GroupNumber} onchange={handleGroupNumberChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="PrimaryCarePhysican" label = "Primary Care Physican" class = "pInfo" type = "text" value={PrimaryCarePhysican} onchange={handlePrimaryCarePhysicanChange}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input data-formfield="InsuranceExpiryDate" label = "Insurance Expiry Date" class = "pInfo" type = "date" value={InsuranceExpiryDate} onchange={handleInsuranceExpiryDateChange}></lightning-input>
+                    <template if:true={ExpDateerror}> 
+                        <div style="color:red; padding-left: 1.5rem;">Insurance is Expired</div>
+                    </template>
+                </div>
+                
+            </div>
+        </lightning-card>
+        <footer class="slds-modal__footer" style="background-color:white;">
+            <button class="slds-button slds-button_neutral" onclick={closedModal} title="Cancel">Cancel</button>
+            <button class="slds-button slds-button_neutral" onclick={SaveandopenNew} title="SaveandNew">Save & New</button>
+            <button class="slds-button slds-button_brand" onclick={handleSubmit} type="submit" title="Save">Save</button>
+        </footer>
+        
+ 
+    </div>
+</template>

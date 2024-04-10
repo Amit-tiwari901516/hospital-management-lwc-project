@@ -1,0 +1,47 @@
+<template>
+    <div class="container">
+        <lightning-card title="Ordering of Lab Test">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Test Name" class="field" type="text" value={TestName} onchange={changeTestNameHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Order Date" class="field" type="date" value={OrderDate} onchange={changeOrderDateHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-combobox
+                        name="Status"
+                        label="Status"
+                        value={Status}
+                        placeholder="none"
+                        options={statusOptions}
+                        onchange={handleStatusChange}  
+                        class="field"                
+                    ></lightning-combobox>
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card title="Prescription for paitents">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Medication Name" class="field" type="text" value={MedicationName} onchange={changeMedicationNameHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Dosage" class="field" type="text" value={Dosage} onchange={changeDosageHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Frequency" class="field" type="text" value={Frequency} onchange={changeFrequencyHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Prescription" class="field" type="text" value={Prescription} onchange={changePrescriptionHandler}></lightning-input>
+                </div>
+            </div>
+        </lightning-card>
+        <footer class="slds-modal__footer" style="background-color:white;">
+            <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+            <button class="slds-button slds-button_neutral" onclick={SaveandopenNew} title="SaveandNew">Save & New</button>
+            <button class="slds-button slds-button_brand" onclick={handleSubmit} type="submit" title="Save">Save</button>
+        </footer>
+    </div>
+</template>

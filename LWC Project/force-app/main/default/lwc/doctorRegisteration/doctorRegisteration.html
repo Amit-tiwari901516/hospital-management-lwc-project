@@ -1,0 +1,55 @@
+<template>
+    <div class="container">
+        <lightning-card title="Doctor Registertion">
+            <div class ="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Full Name" class="field" type="text" value={FullName} onchange={ChangeFUllNameHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Date of Birth" class="field" type="date" value={DOB} onchange={ChangeDOBHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Email" class="field" type="email" value={email} onchange={ChangeEmailHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Phone" class="field" type="phone" value={phone} onchange={ChangePhoneHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-input label="Address" class="field" type="Long Text Area" value={address} onchange={ChangeAddressHandler}></lightning-input>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-combobox
+                      name="Specialisation"
+                      label="Specialisation"
+                      value={specialisationValue}
+                      placeholder="Select Specialisation"
+                      options={specialisationOptions}
+                      onchange={handleSpecialisationChange} 
+                       class="field"
+                    ></lightning-combobox>
+                </div>
+                <div class="slds-size_1-of-2">
+                    <lightning-combobox
+                      name="Member of Other Medical Association"
+                      label="Member of Other Medical Association"
+                      value={otheValue}
+                      placeholder="Select"
+                      options={otherOptions}
+                      onchange={handleMemberChange} 
+                       class="field"
+                       
+                    ></lightning-combobox>
+                </div>
+            
+            </div>
+          
+        </lightning-card>
+        <footer class="slds-modal__footer" style="background-color:white;">
+            <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+            <button class="slds-button slds-button_neutral" onclick={SaveandopenNew} title="SaveandNew">Save & New</button>
+            <button class="slds-button slds-button_brand" onclick={handleSubmit} type="submit" title="Save">Save</button>
+        </footer>
+    </div>
+  
+</template>
+

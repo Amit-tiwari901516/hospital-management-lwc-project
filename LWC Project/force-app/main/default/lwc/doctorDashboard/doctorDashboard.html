@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-4">
+            <lightning-card >
+                <div class="slds-size_1-of-1" style="padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 5px; padding-bottom: 18px;">
+                    <lightning-record-picker
+                        object-api-name="Doctor_Registeration__c"
+                        label="Doctor Name"
+                        onchange={changeTreatingDoctorHandler}
+                        value={TreatingDoctor} 
+                    ></lightning-record-picker>
+                </div>
+            </lightning-card>
+             
+        </div>
+
+        <div class="slds-col slds-size_3-of-4">
+            <lightning-card title="Scheduled Appointments">
+                <div >
+                    <lightning-datatable key-field="Id" data={recordsToDisplay} hide-checkbox-column="true" columns={columns}></lightning-datatable>
+                </div>
+            </lightning-card>
+            <footer class="slds-modal__footer" style="background-color:white;">
+                <button class="slds-button slds-button_brand" onclick={clickHandler} type="submit" title="Download">Download</button>
+            </footer>
+        </div>
+    </div>    
+</template>

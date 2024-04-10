@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 18px;
+    height: auto;
+    width: auto;
+}
+.field {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 18px;
+}
+
+.button {
+    padding: 0.5rem; 
+}

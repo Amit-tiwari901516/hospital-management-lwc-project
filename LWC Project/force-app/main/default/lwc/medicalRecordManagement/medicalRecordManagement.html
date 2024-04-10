@@ -1,0 +1,64 @@
+<template>
+    <div class="container">
+       <lightning-card title="Paitent Diagnosis">
+           <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-2" style="padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                    padding-top: 5px;
+                    padding-bottom: 18px;">
+                <lightning-record-picker
+                    object-api-name="Patient_Registration__c"
+                    label="Patient"
+                    matching-info={PatientMatchingInfo}
+                    onchange={changePatientHandler}
+                    value={Patient} 
+                ></lightning-record-picker>
+            </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Diagnosis Code" class="field" type="text" value={DiagnosisCode} onchange={changeDiagnosisCodeHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Description" class="field" type="long text area" value={Description} onchange={changeDescriptionHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Date Diagnosed" class="field" type="date" value={DateDiagnosed} onchange={ChangeDateDiagnosedHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2" style="padding-left: 1.5rem;
+               padding-right: 1.5rem;
+               padding-top: 5px;
+               padding-bottom: 18px;">
+                   <lightning-record-picker
+                       object-api-name="Doctor_Registeration__c"
+                       label="Treating Doctor"
+                       matching-info={MatchingInfo}
+                       onchange={changeTreatingDoctorHandler}
+                       value={TreatingDoctor} 
+                   ></lightning-record-picker>
+               </div>
+           </div>
+       </lightning-card>
+
+       <lightning-card title="Treatment Plan">
+           <div class="slds-grid slds-wrap">
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Treatment Plan Name" class="field" type="text" value={TreatmentPlanName} onchange={changeTreatmentPlanNameHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Treatment Plan Description" class="field" type="long text area" value={TreatmentPlanDescription} onchange={changeTreatmentPlanDescriptionHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="Start Date" class="field" type="date" value={StartDate} onchange={changeStartDateHandler}></lightning-input>
+               </div>
+               <div class="slds-size_1-of-2">
+                   <lightning-input label="End Date" class="field" type="date" value={EndDate} onchange={changeEndDateHandler}></lightning-input>
+               </div>
+           </div>
+       </lightning-card>
+       <footer class="slds-modal__footer" style="background-color:white;">
+           <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+           <button class="slds-button slds-button_neutral" onclick={SaveandopenNew} title="SaveandNew">Save & New</button>
+           <button class="slds-button slds-button_brand" onclick={handleSubmit} type="submit" title="Save">Save</button>
+       </footer>
+
+    </div>
+</template>
