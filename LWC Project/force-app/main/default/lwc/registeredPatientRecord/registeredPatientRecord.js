@@ -15,8 +15,8 @@ export default class RegisteredPatientRecord extends LightningElement {
   
     columns = [
         { label : 'Name', fieldName : 'RegisterPatientLink', type:'url', typeAttributes: { label: { fieldName: 'Name' }, target: '_blank'}},
-        { label : "Email", fieldName : "Email__c"},
-        { label : "Phone", fieldName : "Phone__c"}
+        { label : "Email", fieldName : "Email__c", editable: true},
+        { label : "Phone", fieldName : "Phone__c", editable: true}
     ];
 
      // fetch contact records from apex method 
