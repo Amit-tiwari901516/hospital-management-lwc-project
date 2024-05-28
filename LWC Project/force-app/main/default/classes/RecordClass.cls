@@ -63,4 +63,9 @@ public with sharing class RecordClass {
         return [SELECT Id, Name, City__c, Postal_Zip_Code__c, Country__c, State__c, Street_Address__c FROM Patient_Registration__c  WHERE Id = :recordId LIMIT 1];
     }
 
+
+   
 }
+
+
+

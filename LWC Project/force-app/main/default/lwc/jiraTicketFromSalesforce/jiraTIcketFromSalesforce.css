@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 18px;
+}
+.field {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 5px;
+    padding-bottom: 18px;
+}
+
+.c1 {
+    padding: 1.0rem;
+
+}

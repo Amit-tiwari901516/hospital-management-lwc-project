@@ -1,0 +1,113 @@
+<template>
+    <div class="container">
+        <div class="slds-grid slds-gutters">
+             <div class="slds-col slds-size_1-of-4">
+                <lightning-card title="Create Jira Ticket" icon-name="custom:custom14">
+                    <div class="slds-m-around_medium" style="padding: 0.5rem;">
+                        <div style="padding: 0.5rem;">
+                            <lightning-input type="text" label="Summary" value={summary} onchange={handleInputChange} name="summary"></lightning-input>
+                            <lightning-textarea label="Description" value={description} onchange={handleInputChange} name="description"></lightning-textarea>
+                        </div>
+                        <div style="padding: 0.5rem;">
+                            <lightning-button variant="brand" label="Create Issue" title="Create Issue" onclick={createIssue} class="slds-m-top_medium"></lightning-button>
+                        </div>
+                    </div>
+                </lightning-card>
+            </div> 
+            
+        
+            <!-- <div class="slds-col slds-size_4-of-4">
+                <lightning-card title="JIRA Issues" icon-name="custom:custom14">
+                    <div class="slds-m-around_medium" style="padding: 0.5rem;">
+                        <lightning-datatable
+                            key-field="id"
+                            data={issues}
+                            columns={columns}
+                            hide-checkbox-column="true">
+                        </lightning-datatable>
+                    </div>
+                </lightning-card>
+            </div>             -->
+        
+        </div>
+
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-card title="JIRA Details" icon-name="custom:custom14">
+                    <div style="padding: 0.5rem;">
+                        <lightning-input type="text" label="Enter JIRA Issue Key" value={issueKey} onchange={handleIssueKeyChange} class="field"></lightning-input>
+                    </div>
+                    <div style="padding: 0.5rem;">
+                        <lightning-button label="Get Details" variant="brand" onclick={fetchAttachmentsAndComments} class="slds-m-top_medium" ></lightning-button>
+                    </div>
+                </lightning-card>
+            </div>
+
+            <div class="slds-col slds-size_1-of-3">
+                <template if:true={attachments}>
+                    <lightning-card title="Issue Attachments">
+                        <div style="padding: 1.0rem;">
+                            <h3>Attachments:</h3>
+                            <template for:each={attachments} for:item="attachment">
+                                <p key={attachment.id}>
+                                    {attachment.filename} - <a href={attachment.content} target="_blank">Download</a>
+                                </p>
+                            </template>
+                        </div>
+                    </lightning-card>
+                </template>
+            </div>
+        </div>
+
+
+        
+            
+        <div  class="field">
+            <template if:true={comments}>
+                <lightning-card title="Issue Comments">
+                    <div style="padding: 1.0rem; ">
+                        <template for:each={comments} for:item="comment">
+                            <div key={comment.id}>
+                                <div style="font-family: Segoe UI; font-size:14px; padding-left: 0.5rem; margin-bottom: -6px;">
+                                    <b> {comment.authorName} </b>
+                                    <!-- <template if:true={comment.created}>   {comment.created}</template> -->
+                                    <span style="padding-left: 0.65rem; color:#172B4D;"><template if:true={comment.updated}>  {comment.updated}</template> </span>
+                                </div>
+                                <div>
+                                    <pre style="font-family: Segoe UI; line-height:23px; margin-bottom: 0.5rem; font-size:13.5px; padding-left: 0.5rem;color:#172B4D;">{comment.body}</pre>
+                                </div>
+
+                                
+                                <div style="color:#42526E; font-size:14px; padding-left: 0.5rem; margin-bottom: 0.85rem;;">
+                                    <a href= edit target="_blank" style="color:#42526E;">Edit </a> 
+                                    <span style="color:#42526E;"> · </span> 
+                                    <a href= delete target="_blank" style="color:#42526E;">Delete </a>
+                                    <span style="color:#42526E;"> · </span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </lightning-card>
+            </template>
+        </div>
+    
+
+
+        <lightning-card title="Update Jira Issue Assignee">
+            <div class="slds-m-around_medium">
+                <lightning-input type="text" label="Issue Key" value={issueKey} onchange={handleIssueKeyChange}></lightning-input>
+                <lightning-combobox
+                    name="assignee"
+                    label="Assignee"
+                    value={selectedAssignee}
+                    options={assignableUsers}
+                    onchange={handleAssigneeChange}>
+                </lightning-combobox>
+                <lightning-button label="Update Assignee" onclick={updateAssignee}></lightning-button>
+            </div>
+        </lightning-card>
+
+       
+    </div>
+
+</template>
